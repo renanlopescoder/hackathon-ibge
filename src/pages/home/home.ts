@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ChatProvider } from '../../providers/chat/chat';
 
 @Component({
   selector: 'page-home',
@@ -7,7 +7,23 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  public reply: any;
+
+  constructor(
+    private chatProvider: ChatProvider
+    ) {
+
+    this.onStarChat();
+
+  }
+
+  onStarChat() {
+
+    this.chatProvider.startChat().then((res: any) => {
+      console.log('res', res);
+    }, (err) => {
+      console.log('err', err);
+    });
 
   }
 
