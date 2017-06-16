@@ -4,6 +4,7 @@ segue o fluxo ein
 
 # PRIMEIRA REQUISIÇÃO
 
+<code>
 {
   url: '/startChat',
   params: {},
@@ -16,12 +17,14 @@ segue o fluxo ein
     delay: number,
   }
 }
+</code>
 
 
 # aplicativo recebeu essa resposta da api
 
 # agora o aplicativo vai devolver a resposta para a api
 
+<code>
 {
   url: '/reply',
   params: {
@@ -38,7 +41,4 @@ segue o fluxo ein
     delay: number
   }
 }
-
-
-
-
+</code>
