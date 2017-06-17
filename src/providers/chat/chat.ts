@@ -35,12 +35,13 @@ export class ChatProvider {
     });
   }
 
-  newUserReply(aswerFormat, reply) {
+  newUserReply(reply: any) {
     return new Promise((resolve, reject) => {
 
       let data = [
-        `aswerFormat:${aswerFormat}`,
-        `reply:${reply}`
+        `userId=${reply.userId}`,
+        `questionId=${reply.questionId}`,
+        `reply=${reply.message}`
       ];
 
       this.setHeaders();
@@ -71,9 +72,14 @@ export class ChatProvider {
   }
 
   getUserName() {
-    return new Promise((resolve) => {
-      let userName = JSON.parse(localStorage.getItem('alfredUserName'));
-      resolve(userName);
+    return new Promise((resolve, reject) => {
+      let json = localStorage.getItem('alfredUserName');
+      if (json) {
+        let userName = JSON.parse(json);
+        resolve(userName);
+      } else {
+        reject(false);
+      }
     });
   }
   

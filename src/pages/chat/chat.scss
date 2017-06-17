@@ -1,0 +1,56 @@
+$gray1: #ccc;
+
+page-chat {
+  
+  form {
+    display: flex;
+    align-items: center;
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+
+    .date {
+      font-size: 0.7em;
+      color: $gray1;
+    }
+
+    .text {
+      font-size: 1.4em;
+    }
+
+    .avatar {
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: center top;
+      width: 100px;
+      height: 100px;
+    }
+
+    &.bot {
+      .avatar {
+        background-image: url('../assets/bot.png');
+      }
+    }
+
+    &.user {
+      justify-content: flex-end;
+      text-align: right;
+
+      .avatar {
+        background-image: url('../assets/user.png');
+      }
+    }
+
+  }
+
+}
+
+ion-footer {
+  transition: 1s all;
+
+  &.down {
+    bottom: -100px !important;
+  }
+}

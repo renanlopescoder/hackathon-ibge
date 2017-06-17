@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      IBGE ALFRED
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <div *ngFor="let message of messages" class="message-box">
+
+    <!-- message bot -->
+    <div class="message bot" *ngIf="message.userType === 'bot'">
+      <div class="avatar"></div>
+      <div class="content">
+        <div class="about">
+          <span class="name">{{message.userName}}</span> <span class="date">{{message.dateTime}}</span>
+        </div>
+        <div class="text">{{message.text}}</div>
+      </div>
+    </div>
+
+    <!-- message user -->
+    <div class="message user" *ngIf="message.userType === 'user'">
+      <div class="content">
+        <div class="about">
+          <span class="date">{{message.dateTime}}</span> <span class="name">{{message.userName}}</span>
+        </div>
+        <div class="text">{{message.text}}</div>
+      </div>
+      <div class="avatar"></div>
+    </div>
+
+  </div>
+
+</ion-content>
+
+<ion-footer [class.down]="isLoading">
+
+  <form (ngSubmit)="newUserReply()">
+    <ion-icon name="mic-off"></ion-icon>
+
+    <ion-input *ngIf="activeReplyField === 'text'" [(ngModel)]="replies.text" name="replyText"></ion-input>
+    <ion-input *ngIf="activeReplyField === 'number'" type="number" [(ngModel)]="replies.number" name="replyNumber"></ion-input>
+
+    <button ion-button>OK</button>
+  </form>
+
+</ion-footer>

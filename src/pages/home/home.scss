@@ -1,34 +1,3 @@
 page-home {
-  form {
-    display: flex;
-    align-items: center;
-  }
 
-  .message {
-    display: flex;
-    align-items: center;
-
-    &.bot {
-      .avatar {
-        background-image: url('../assets/bot.png');
-        background-size: 100% auto;
-        width: 100px;
-        height: 100px;
-      }
-    }
-
-    &.user {
-
-    }
-
-  }
-
-}
-
-ion-footer {
-  transition: 1s all;
-
-  .down {
-    bottom: -100px !important;
-  }
 }

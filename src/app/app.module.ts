@@ -7,12 +7,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ChatPage } from '../pages/chat/chat';
 import { ChatProvider } from '../providers/chat/chat';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ChatPage
   ],
   imports: [
     HttpModule,
@@ -22,7 +24,8 @@ import { ChatProvider } from '../providers/chat/chat';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ChatPage
   ],
   providers: [
     StatusBar,

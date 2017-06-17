@@ -1,50 +1,7 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      IBGE ALFRED
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content padding text-center> 
+  <h1>
+  Bem vindo ao assistente
+  </h1>
 
-<ion-content padding>
-  
-  <div *ngFor="let message of messages" class="message-box">
-
-    <!-- message bot -->
-    <div class="message bot" *ngIf="message.question && message.user === 'bot'">
-      <div class="avatar"></div>
-      <div class="content">
-        <div class="about">
-          <span class="name">{{botName}}</span> <span class="date">{{message.dateTime}}</span>
-        </div>
-        <div class="text">{{message.text}}</div>
-      </div>
-    </div>
-
-    <!-- message user -->
-    <div class="message user" *ngIf="message.question && message.user === 'user'">
-      <div class="avatar"></div>
-      <div class="content">
-        <div class="about">
-          <span class="name">{{botName}}</span> <span class="date">{{message.dateTime}}</span>
-        </div>
-        <div class="text">{{message.text}}</div>
-      </div>
-    </div>
-
-  </div>
-
+  <button ion-button (click)="onGoToChat()">ENTRAR</button>
 </ion-content>
-
-<ion-footer [class.down]="isLoading">
-
-  <form (ngSubmit)="newUserReply()">
-    <ion-icon name="mic-off"></ion-icon>
-
-    <ion-input [(ngModel)]="replies.text" name="replyText"></ion-input>
-    <ion-input hidden type="number" [(ngModel)]="replies.number" name="replyNumber"></ion-input>
-
-    <button ion-button (click)="newUserReply()">OK</button>
-  </form>
-
-</ion-footer>
