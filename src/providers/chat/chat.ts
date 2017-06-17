@@ -18,7 +18,7 @@ export class ChatProvider {
 
   setHeaders() {
     this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    this.headers.append('Content-Type', 'application/json');
   }
 
   startChat() {
@@ -38,14 +38,20 @@ export class ChatProvider {
   newUserReply(reply: any) {
     return new Promise((resolve, reject) => {
 
-      let data = [
-        `userId=${reply.userId}`,
-        `questionId=${reply.questionId}`,
-        `reply=${reply.message}`
-      ];
+      let data = {
+        userId: reply.userId,
+        questionId: reply.questionId,
+        message: reply.message
+      }
+
+      // let data = [
+      //   `userId=${reply.userId}`,
+      //   `questionId=${reply.questionId}`,
+      //   `reply=${reply.message}`
+      // ];
 
       this.setHeaders();
-      this.http.post(`${Config.postNewReply}`, data.join('&'), {
+      this.http.post(`${Config.postNewReply}`, data, {
         headers: this.headers
       }).subscribe((res:any) => {
         let json = res.json();

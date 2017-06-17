@@ -1,6 +1,9 @@
-$gray1: #ccc;
-
 page-chat {
+
+  ion-content {
+    background-image: url('../assets/pattern-backgrounds.jpg') !important;
+    background-size: 100% auto;
+  }
   
   form {
     display: flex;
@@ -10,10 +13,17 @@ page-chat {
   .message {
     display: flex;
     align-items: center;
+    background: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+    border-radius: 8px;
+
+    .name {
+      color: $primary;
+    }
 
     .date {
       font-size: 0.7em;
-      color: $gray1;
+      color: $gray2;
     }
 
     .text {
@@ -49,8 +59,18 @@ page-chat {
 
 ion-footer {
   transition: 1s all;
+  background: $primary2;
+  padding: 10px;
+
+  input {
+    color: white;
+  }
 
   &.down {
     bottom: -100px !important;
+  }
+
+  input {
+    font-size: 1.3em;
   }
 }

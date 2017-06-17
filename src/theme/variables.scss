@@ -33,6 +33,11 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+$primary: rgba(63, 81, 181, 1);
+$primary2: rgba(63, 81, 181, 0.6);
+$gray1: #ccc;
+$gray2: #444;
+
 $colors: (
   primary:    #488aff,
   secondary:  #32db64,

@@ -1,7 +1,27 @@
-<ion-content padding text-center> 
-  <h1>
-  Bem vindo ao assistente
-  </h1>
-
-  <button ion-button (click)="onGoToChat()">ENTRAR</button>
+<ion-content>
+  <div class="slider fullscreen s-container">
+    <ul class="slides">
+      <li class="velocity-animating active" style="opacity: 0.986696; transform: translateX(0px) translateY(0px);">
+        <img src="assets/wallpaper.jpg">
+        <div class="caption center-align" style="opacity: 1; transform: translateY(-100px) translateX(0px);">
+          <div class="row">
+            <img class="alfred-logo col l2" src="assets/bot.png">
+            <div class="col s12 m12 l7 offset-l7">
+              <div class="card z-depth-3 hoverable alfred-bg">
+                <div class="card-content">
+                  <div id="test6">
+                    <div class="light">
+                      <h3 class="cinzel-font green-theme-text">Alfred</h3>
+                      <p>Seu assistente pos enem e universitario</p>
+                      <a href="#" (click)="onGoToChat()" class="btn light-blue accent-4">Converse comigo <i class="material-icons right">question_answer</i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </ion-content>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      IBGE ALFRED
+      ALFRED
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -44,7 +44,7 @@
     <ion-input *ngIf="activeReplyField === 'text'" [(ngModel)]="replies.text" name="replyText"></ion-input>
     <ion-input *ngIf="activeReplyField === 'number'" type="number" [(ngModel)]="replies.number" name="replyNumber"></ion-input>
 
-    <button ion-button>OK</button>
+    <button ion-fab>OK</button>
   </form>
 
 </ion-footer>
