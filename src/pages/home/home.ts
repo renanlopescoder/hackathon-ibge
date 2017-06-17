@@ -30,10 +30,8 @@ export class HomePage {
   onStarChat() {
 
     this.chatProvider.startChat().then((res: any) => {
-      console.log('res', res);
 
       this.chatProvider.saveUserId(res.userId);
-
       this.newQuestion(res);
 
     }, (err) => {
@@ -42,14 +40,34 @@ export class HomePage {
 
   }
 
-  newQuestion(question: any) {
-    let t = this;
-    setTimeout(function() {
-      t.showMessage('bot', question);
-      t.showAvailableReply(question);
-      t.hideLoader();
-      t.currentQuestion = question;
-    }, question.delay);
+  newQuestion(questionObj) {
+    // let t = this;
+
+    if (questionObj.comment != "") {
+
+      // setTimeout(() => {
+        this.showMessage('bot', questionObj, questionObj.comment).then(() => {
+        // setTimeout(() => {
+          this.showMessage('bot', questionObj, questionObj.question);
+          this.showAvailableReply(questionObj);
+          this.currentQuestion = questionObj;
+          this.hideLoader();
+        // }, questionObj.delay);
+        });
+      // }, questionObj.delay);
+
+
+    } else {
+
+      // setTimeout(() => {
+        this.showMessage('bot', questionObj, questionObj.question);
+        this.showAvailableReply(questionObj);
+        this.hideLoader();
+        this.currentQuestion = questionObj;
+      // }, questionObj.delay);
+
+    }
+
   }
 
   showLoader() {
@@ -78,24 +96,30 @@ export class HomePage {
   }
 
   newUserReply() {
-    let reply = this.replies[this.activeReplyField];
-    console.log('active', this.activeReplyField);
-    console.log('replies', this.replies);
-    console.log('msg', reply);
+    let reply:any = {};
+    reply.message = this.replies[this.activeReplyField];
 
-    // this.showLoader();
-    // this.showMessage('user', reply);
-    // this.chatProvider.newUserReply(this.currentQuestion.answerFormat, reply).then((res) => {
-    //   this.newQuestion(res);
-    // });
+    this.showLoader();
+
+    this.showMessage('user', reply, reply.message);
+    this.chatProvider.newUserReply(this.currentQuestion.answerFormat, reply).then((res) => {
+      this.newQuestion(res);
+    });
+
+    this.replies[this.activeReplyField] = "";
   }
 
-  showMessage(user, msg) {
-    console.log('message', msg);
-    msg.user = user;
-    msg.dateTime = new Date().toLocaleTimeString();
-    this.messages.push(msg);
-    console.log('messages', this.messages);
+  showMessage(userType, msgObj, text) {
+    return new Promise((resolve) => {
+      console.log('message', msgObj);
+      console.log('message txt', text);
+      msgObj.user = userType;
+      msgObj.text = text;
+      msgObj.dateTime = new Date().toLocaleTimeString();
+      this.messages.push(msgObj);
+      console.log('messages', this.messages);
+      resolve();
+    });
   }
 
 }

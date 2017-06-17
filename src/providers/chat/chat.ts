@@ -66,6 +66,16 @@ export class ChatProvider {
     });
   }
 
+  saveUserName(userName: string) {
+    localStorage.setItem('alfredUserName', JSON.stringify(userName));
+  }
+
+  getUserName() {
+    return new Promise((resolve) => {
+      let userName = JSON.parse(localStorage.getItem('alfredUserName'));
+      resolve(userName);
+    });
+  }
   
 
 }
