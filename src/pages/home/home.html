@@ -8,15 +8,43 @@
 
 <ion-content padding>
   
-  test
+  <div *ngFor="let message of messages" class="message-box">
+
+    <!-- message bot -->
+    <div class="message bot" *ngIf="message.question && message.user === 'bot'">
+      <div class="avatar"></div>
+      <div class="content">
+        <div class="about">
+          <span class="name">{{botName}}</span> <span class="date">{{message.dateTime}}</span>
+        </div>
+        <div class="text">{{message.question}}</div>
+      </div>
+    </div>
+
+    <!-- message user -->
+    <div class="message user" *ngIf="message.question && message.user === 'user'">
+      <div class="avatar"></div>
+      <div class="content">
+        <div class="about">
+          <span class="name">{{botName}}</span> <span class="date">{{message.dateTime}}</span>
+        </div>
+        <div class="text">{{message.question}}</div>
+      </div>
+    </div>
+
+  </div>
 
 </ion-content>
 
-<ion-footer>
+<ion-footer [class.down]="isLoading">
 
-  <form (ngSubmit)="doReply()">
+  <form (ngSubmit)="newUserReply()">
     <ion-icon name="mic-off"></ion-icon>
-    <ion-input [(ngModel)]="reply" name="reply"></ion-input>
+
+    <ion-input [(ngModel)]="replies.text" name="replyText"></ion-input>
+    <ion-input hidden type="number" [(ngModel)]="replies.number" name="replyNumber"></ion-input>
+
+    <button ion-button (click)="newUserReply()">OK</button>
   </form>
 
 </ion-footer>

@@ -27,11 +27,45 @@ export class ChatProvider {
       this.http.post(`${Config.postStartChat}`, {}, {
         headers: this.headers
       }).subscribe((res: any) => {
-        resolve(res);
+        let json = res.json();
+        resolve(json);
       }, (err) => {
         reject(err);
       })
     });
   }
+
+  newUserReply(aswerFormat, reply) {
+    return new Promise((resolve, reject) => {
+
+      let data = [
+        `aswerFormat:${aswerFormat}`,
+        `reply:${reply}`
+      ];
+
+      this.setHeaders();
+      this.http.post(`${Config.postNewReply}`, data.join('&'), {
+        headers: this.headers
+      }).subscribe((res:any) => {
+        let json = res.json();
+        resolve(json);
+      }, (err) => {
+        reject(err);
+      })
+    })
+  }
+
+  saveUserId(userId: number) {
+    localStorage.setItem('alfredUserId', JSON.stringify(userId));
+  }
+
+  getUserId() {
+    return new Promise((resolve) => {
+      let userId = JSON.parse(localStorage.getItem('alfredUserId'));
+      resolve(userId);
+    });
+  }
+
+  
 
 }

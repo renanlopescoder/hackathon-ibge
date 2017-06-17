@@ -35,8 +35,8 @@ segue o fluxo ein
   return: {
     userId: int,
     question: text,
-    questionId: integer,
-    format: text || number || options,
+    questionType: integer,
+    answerFormat: text || number || options,
     options: {1: Opção, 2: Opção, 3: Opção ... },
     delay: number
   }
